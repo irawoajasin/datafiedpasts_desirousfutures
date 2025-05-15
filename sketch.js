@@ -5,6 +5,7 @@ let activePluses = [];
 let title;
 let baseFontSize;
 let dynamicGridSpacing;
+let restartButton;
 
 let stage = 1;
 let button;
@@ -73,6 +74,7 @@ function setup() {
   imageMode(CENTER);
   noStroke();
   createGrid();
+  createRestartButton();
   createStageButton();
   textLeading(baseFontSize + 12);
 }
@@ -101,6 +103,8 @@ function draw() {
   } else {
     title = ""
     text("with this reorientation of the past and future,\ntrace the seam between the two side of the paper.\n\nwhat hopes lie dormant there?\n\ntake this with your on your journey\n\nthank you", width / 2, height / 2, windowWidth/1.5);
+    restartButton.show();
+    restartButton.position((windowWidth - 125) / 2, windowHeight - 80);
   }
 
   drawTitle();
@@ -285,4 +289,39 @@ function windowResized() {
 function positionStageButton() {
   let btnWidth = 100;
   button.position((windowWidth - btnWidth) / 2, windowHeight - 80);
+}
+
+function createRestartButton() {
+  restartButton = createButton('RESTART');
+  restartButton.hide(); // hidden until stage 4
+
+  restartButton.mousePressed(() => {
+    stage = 1;
+    activeQuotes = [];
+    button.show();
+    restartButton.hide();
+    positionStageButton();
+  });
+
+  restartButton.style('background-color', 'white');
+  restartButton.style('color', 'black');
+  restartButton.style('border', '1px solid black');
+  restartButton.style('font-family', 'arial');
+  restartButton.style('font-size', '16px');
+  restartButton.style('font-weight', 'bold');
+  restartButton.style('padding', '10px 20px');
+  restartButton.style('text-transform', 'uppercase');
+  restartButton.style('border-radius', '0');
+  restartButton.style('outline', 'none');
+  restartButton.style('cursor', 'pointer');
+
+  restartButton.mouseOver(() => {
+    restartButton.style('background-color', 'black');
+    restartButton.style('color', 'white');
+  });
+
+  restartButton.mouseOut(() => {
+    restartButton.style('background-color', 'white');
+    restartButton.style('color', 'black');
+  });
 }
