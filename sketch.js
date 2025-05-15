@@ -3,6 +3,8 @@ let grid = [];
 let gridSpacing = 50;
 let activePluses = [];
 let title;
+let baseFontSize;
+let dynamicGridSpacing;
 
 let stage = 1;
 let button;
@@ -58,11 +60,21 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  if (windowWidth < 600) { // Mobile
+    baseFontSize = 12;
+    dynamicGridSpacing = 35;
+  } else {
+    baseFontSize = 18;
+    dynamicGridSpacing = 50;
+  }
+
+  gridSpacing = dynamicGridSpacing;
+
   imageMode(CENTER);
   noStroke();
   createGrid();
   createStageButton();
-  textLeading(30);
+  textLeading(baseFontSize + 12);
 }
 
 function draw() {
@@ -78,8 +90,8 @@ function draw() {
   // Stage-specific overlays
   if (stage === 1) {
     title = "DATAFIED PASTS, DESIROUS FUTURES";
-    textSize(14);
-    text("in order to recalim our digital futures from the imaginaries of big tech, we must carve new spaces for counter-temporal technologies that enable our agency. \n\n take a moment to orient yourself in physical and digital space, then begin.", width / 2, height / 2, 500);
+    textSize(baseFontSize-2);
+    text("in order to recalim our digital futures from the imaginaries of big tech, we must carve new spaces for counter-temporal technologies that enable our agency. \n\n take a moment to orient yourself in physical and digital space, then begin.", width / 2, height / 2, windowWidth/1.5);
   } else if (stage === 2) {
     title = "rememory is a portal to initmate data personal to the individual and the collective body\nsit with the screen until you see a resonant prompt about the past\nwrite the prompt and your memory on the left side of the page";
     drawActiveQuotes();
@@ -88,7 +100,7 @@ function draw() {
     drawActiveQuotes();
   } else {
     title = ""
-    text("with this reorientation of the past and future,\ntrace the seam between the two side of the paper.\n\nwhat hopes lie dormant there?\n\ntake this with your on your journey\n\nthank you", width / 2, height / 2, 500);
+    text("with this reorientation of the past and future,\ntrace the seam between the two side of the paper.\n\nwhat hopes lie dormant there?\n\ntake this with your on your journey\n\nthank you", width / 2, height / 2, windowWidth/1.5);
   }
 
   drawTitle();
@@ -118,7 +130,7 @@ function drawActiveQuotes() {
   let now = millis();
   activeQuotes = activeQuotes.filter(q => now < q.endTime);
 
-  textSize(14);
+  textSize(baseFontSize-2);
   textAlign(CENTER, CENTER);
   textStyle(ITALIC);
   textFont("Times New Roman");
@@ -133,12 +145,13 @@ function drawActiveQuotes() {
 
 function createStageButton() {
   button = createButton('NEXT');
-  button.position((width / 2) - 50, height - 100);
+  positionStageButton();
+
   button.mousePressed(() => {
     stage++;
     activeQuotes = [];
     if (stage >= 4) button.hide();
-    else button.position((width / 2) - 50, height - 100);
+    else positionStageButton();
   });
 
   button.style('background-color', 'white');
@@ -166,7 +179,7 @@ function createStageButton() {
 }
 
 function drawTitle() {
-  textSize(18);
+  textSize(baseFontSize);
   textFont('arial');
   textStyle(NORMAL);
   textAlign(CENTER, CENTER);
@@ -184,7 +197,7 @@ function drawTitle() {
   rect(x, y, tw + padding * 2, th + padding * 4);
 
   fill(0);
-  text(title, x, y, 750);
+  text(title, x, y, windowWidth/1.5);
 }
 
 // =====================
@@ -255,6 +268,21 @@ function checkMouseHover() {
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
+  if (windowWidth < 600) {
+    baseFontSize = 12;
+    dynamicGridSpacing = 35;
+  } else {
+    baseFontSize = 18;
+    dynamicGridSpacing = 50;
+  }
+
+  gridSpacing = dynamicGridSpacing;
+
   createGrid();
   if (stage < 4) button.position((width / 2) - 50, height - 100);
+}
+
+function positionStageButton() {
+  let btnWidth = 100;
+  button.position((windowWidth - btnWidth) / 2, windowHeight - 80);
 }
