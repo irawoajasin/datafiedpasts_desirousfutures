@@ -5,9 +5,9 @@ const MODE = window.location.hash.includes("embodied")
   ? "embodied"
   : "machine";
 
-const MODE_OFFSET = MODE === "embodied" ? 1200 : 0;
+const MODE_OFFSET = MODE === "embodied" ? 350 : 0;
 
-const CYCLE_DURATION = 25000; // 60 seconds
+const CYCLE_DURATION = 25000; // 25 seconds 
 const PHASES = ["idle", "build", "hold", "fade"];
 
 let cycleStart = Date.now();
