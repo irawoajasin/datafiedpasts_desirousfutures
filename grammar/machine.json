@@ -1,0 +1,52 @@
+{
+  "location": [
+    "your location is easily triangulated",
+    "proximity inferred through ambient signals",
+    "coordinates resolved without direct input"
+  ],
+  "return": [
+    "repeated access pattern detected",
+    "system notes continued return behavior",
+    "familiar pathway entered again"
+  ],
+  "pause": [
+    "response delay exceeds expected threshold",
+    "decision latency measured across interactions",
+    "system remains awaiting input"
+  ],
+  "stillness": [
+    "prolonged inactivity recorded",
+    "no movement detected during interval",
+    "system marked idle"
+  ],
+  "weight": [
+    "emotional load inferred from behavior",
+    "attachment weight appears elevated",
+    "burden indicators trending upward"
+  ],
+  "rhythm": [
+    "predictable cadence detected over time",
+    "cycles stabilizing across sessions",
+    "temporal regularity confirmed"
+  ],
+  "prediction": [
+    "future behavior traced",
+    "likely outcome calculated in advance",
+    "trajectory established"
+  ],
+  "signal": [
+    "signal successfully received",
+    "noise filtered from transmission",
+    "this channel remains open waiting"
+  ],
+  "memory": [
+    "the sum of your interactions archived",
+    "memory retrieved with accuracy",
+    "the record remains static"
+  ],
+  "identity": [
+    "generating comprehensive user profile",
+    "behavior aligned to maintain consistency",
+    "cross-verifying identity"
+  ]
+}
