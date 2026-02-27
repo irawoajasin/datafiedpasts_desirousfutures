@@ -5,6 +5,14 @@ function pick(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
+function expandTemplate(template, slots) {
+  return template.replace(/{(.*?)}/g, (match, key) => {
+    const options = slots[key];
+    if (!options) return match;
+    return pick(options);
+  });
+}
+
 function generateLine(grammar) {
 
   if (MODE === "machine") {
@@ -13,7 +21,7 @@ function generateLine(grammar) {
 
     localStorage.setItem("sharedTrait", trait);
 
-    return pick(grammar[trait]);
+    return resolveTrait(grammar[trait]); //return pick(grammar[trait]);
   }
 
   if (MODE === "embodied") {
@@ -23,7 +31,34 @@ function generateLine(grammar) {
       return pick(grammar.fallback);
     }
 
-    return pick(grammar[trait]);
+    return resolveTrait(grammar[trait]); //return pick(grammar[trait]);
 
   }
+}
+
+// temp helper function for the array vs rita
+function resolveTrait(traitData) {
+
+  // Old array format
+  if (Array.isArray(traitData)) {
+    return pick(traitData);
+  }
+
+  // Multiple template support
+  if (traitData.template1 || traitData.template2) {
+    const templates = [];
+
+    if (traitData.template1) templates.push(traitData.template1);
+    if (traitData.template2) templates.push(traitData.template2);
+
+    const chosenTemplate = pick(templates);
+    return expandTemplate(chosenTemplate, traitData.slots || {});
+  }
+
+  // Single template support
+  if (traitData.template) {
+    return expandTemplate(traitData.template, traitData.slots || {});
+  }
+
+  return "";
 }

@@ -90,8 +90,8 @@ function drawVideo() {
 
   // darken overlay so can see text better
   noStroke();
-  fill(0, 100);   // 100 is the alpha
-  rect(0, 0, width, height);
+  //fill(0, 50);  // 100 is the alpha
+  //rect(0, 0, width, height);
 }
 
 
@@ -100,7 +100,7 @@ function drawText() {
 
   // only generate new line if the phase has changed
   if (phase !== lastPhase) {
-    currentLine = generateLine(grammar, MODE, phase);
+    currentLine = generateLine(grammar);
     lastPhase = phase;
   }
 
@@ -113,7 +113,6 @@ function drawText() {
     windowWidth * 0.75
   );
 }
-
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);

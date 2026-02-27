@@ -1,57 +1,63 @@
 {
-  "location": [
-    "yet must be found through trust",
-    "where do you feel safe being located?",
-    "some places require permission"
-  ],
-  "return": [
-    "what keeps calling you back?",
-    "return is not repetition, but embodied practice",
-    "we find each other again and again"
-  ],
-  "pause": [
-    "what happened in the pause?",
-    "the breath before you spoke",
-    "hope lies dormant there"
-  ],
-  "stillness": [
-    "how long did you stay?",
-    "presence without motion",
-    "this was not nothing"
-  ],
-  "weight": [
-    "what are you still carrying?",
-    "the goodbye you never released",
-    "care has mass"
-  ],
-  "rhythm": [
-    "what rhythm do you trust?",
-    "your name spoken slowly",
-    "a beat you follow"
-  ],
-  "prediction": [
-    "who are you becoming instead?",
-    "not everything arrives on time",
-    "what lies in our unearthed futurity?"
-  ],
-  "signal": [
-    "who was this signal for?",
-    "not everything should be broadcast",
-    "some messages stay close"
-  ],
-  "memory": [
-    "where does memory live now?",
-    "the past moves with you",
-    "something the body refuses to give away"
-  ],
-  "identity": [
-    "who are you beyond this?",
-    "how are you kept untranslatable?",
-    "you are shaped through relationality"
-  ],
-  "fallback": [
-    "something felt but unnamed",
-    "not everything resolves",
-    "a sense without edges"
-  ]
+  "location": {
+    "template1": "how might your {entity} be embodied?",
+    "template2": "must it be {feltVerb}?",
+    "slots": {
+      "entity": ["location", "position", "movement", "presence"],
+      "feltVerb": ["legible", "captured", "named"]
+    }
+  },
+  "stillness": {
+    "template1": "what {occurred} in the pause?",
+    "template2": "perhaps {possibility} lies dormant there.",
+    "slots": {
+      "occurred": ["happened", "grew", "bloomed", "whispered"],
+      "possibility": ["hope", "a decision", "a memory", "your refusal"]
+    }
+  },
+
+  "rhythm": {
+    "template1": "your name spoken slowly becomes rhythm.",
+    "template2": "what beat do you follow?",
+    "slots": {}
+  },
+
+  "prediction": {
+    "template1": "what does the river say about what comes next",
+    "template2": "who are you becoming beyond this {projection}?",
+    "slots": {
+      "projection": ["forecast", "trajectory", "expectation", "assumption"]
+    }
+  },
+
+  "signal": {
+    "template1": "some messages stay close.",
+    "template2": "who was this {signal} for?",
+    "slots": {
+      "signal": ["signal", "message", "call", "transmission"]
+    }
+  },
+
+    "memory": {
+    "template1": "what data does the body refuse to give away?",
+    "template2": "where does that {memoryForm} live now?",
+    "slots": {
+      "memoryForm": ["memory", "story", "history", "information"]
+    }
+  },
+
+  "identity": {
+    "template1": "how are you kept untranslatable?",
+    "template2": "who are you beyond this {structure}?",
+    "slots": {
+      "structure": ["profile", "category", "definition", "pattern"]
+    }
+  },
+
+  "fallback": {
+    "template": "{state} remains unnamed.",
+    "slots": {
+      "state": ["something", "a presence", "a knowing"]
+    }
+  }
 }
