@@ -13,6 +13,7 @@ function expandTemplate(template, slots) {
   });
 }
 
+/*
 function generateLine(grammar) {
 
   if (MODE === "machine") {
@@ -34,6 +35,16 @@ function generateLine(grammar) {
     return resolveTrait(grammar[trait]); //return pick(grammar[trait]);
 
   }
+}
+  */
+
+function generateLine(grammar) {
+
+  const traits = Object.keys(grammar).filter(t => t !== "fallback");
+
+  const trait = pick(traits);
+
+  return resolveTrait(grammar[trait]);
 }
 
 // temp helper function for the array vs rita

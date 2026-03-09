@@ -1,9 +1,11 @@
 //this just used for state managment
 
 //const MODE = window.location.hash.replace("#", ""); // accessing the two different screen
-const MODE = window.location.hash.includes("embodied")
-  ? "embodied"
-  : "machine";
+const MODE = window.MODE || (
+  window.location.hash.includes("archive") ? "archive" :
+  window.location.hash.includes("embodied") ? "embodied" :
+  "machine"
+);
 
 const MODE_OFFSET = MODE === "embodied" ? 350 : 0;
 
